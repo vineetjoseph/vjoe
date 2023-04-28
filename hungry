@@ -1,0 +1,7 @@
+food = input("What would you like to eat? :")
+plant = input("What veggies? :")
+cook = input("How should I cook it? :")
+DIY = input("name a DIY item? :")
+print("MENU")
+print(cook, food, "with", plant, "on a bed of", DIY)
+
