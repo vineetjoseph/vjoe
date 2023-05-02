@@ -1,0 +1,17 @@
+print("Marvel Movie Character Creator")
+print()
+hang = input("Do you like hanging around? :")
+if hang == "yes" :
+  print ("You're spiderman : ")
+else:
+  print("You're not spiderman")
+fly = input("Can you fly? :")
+if fly == "yes" :
+  print ("You are superman, fly away")
+else:
+  print("too bad, steer clear of cliffside")
+undead = input("can you die?")
+if undead == ("no") :
+  print ("you are deadpool. How does it feel to be Ryan Reynolds?")
+else:
+  print("don't get in front of a moving car")
