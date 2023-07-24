@@ -1,0 +1,6 @@
+myName = input("what's your name? :")  
+if myName == "Vineet" :
+    print ("you're the dude with the need for speed")
+else:
+  print("Do you know that Vineet dude")
+  print ("he has the need for speed")
