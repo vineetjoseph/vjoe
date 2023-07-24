@@ -1,0 +1,5 @@
+catordogs = input("are you a cat or dog person:")
+if catordogs == "cat":
+  print("cat's are pawsitively great")
+else:
+  print("dogs are barking awesome")
