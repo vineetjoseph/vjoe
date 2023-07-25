@@ -1,0 +1,12 @@
+print ("MY LOGIN SYSTEM")
+print ("++++++++++")
+username = input("Username >")
+password = input ("Password >")
+if username == "vjoe" and password == "link":
+  print ("Hola Vineet, great job making this log in application. Still a long way to go but great to see you making strides towards new educational goals like computer science. ")
+  print("reminder to keep going and surround yourself with the best to learn from.")
+elif username == "Olga" and password == "love":
+  print("Hi Olga. You're the prettiest lady in the world, thinks this one boy named vineet")
+  print("reminder to be your awesome self cuz that's all the world really needs from you.")
+else:
+  print ("you shall not pass")
