@@ -1,0 +1,15 @@
+print("😎 Fake Fan Finder 🙈")
+print ("-------------")
+fan = input("What your favourite Animation show?")
+if fan == "Rick and Morty":
+  print ("oh yeah!")
+  gadget = input("Name a gadget from the show they use to travel in time?")
+  if gadget == "teleport gun":
+    print("sounds like you know at least one thing about the show")
+  else:
+    print ("well thats not as cool as the teleport gun")
+  char = input("Name the characted that created space baby?")
+  if char == "Morty":
+    print("you're a true Rick and Morty fan")
+  else:
+    print("you're fake news")
