@@ -1,0 +1,10 @@
+print("Affirmation Generator for ye ol frens")
+name = input("who are you?")
+if name == "Vineet" or "vineet":
+ weight = input("how heavy?")
+ if weight == "very heavy" or "heavy" or "light":
+   pounds = input("What is your weight in pounds?")
+ if pounds == "150":
+    print ("Holy cow you're one fit human. Keep up the good work, all the ladies are counting on it?")
+ if pounds == "200":
+    print ("hello there big fella, you must make the footballers quiver in their shoes.")
