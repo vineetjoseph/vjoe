@@ -1,0 +1,5 @@
+myScore = int( input("Whats your score?:"))
+if myScore > 100:
+  print("winner!")
+else:
+  print("lets go again")
