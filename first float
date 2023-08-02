@@ -1,0 +1,5 @@
+pi = float(input("What is pi?"))
+if pi == 3.14:
+  print("Spot on CV Raman")
+else:
+  print("womp womp, wrong answer Einstein")
