@@ -1,0 +1,8 @@
+print ("How many seconds in a year?")
+leap = input("Is it a leap year?")
+if leap == ("yes"):
+  yesLeap = int(60*60*24*366)
+  print (yesLeap)
+else:
+  noLeap = int(60*60*24*365)
+  print (noLeap)
