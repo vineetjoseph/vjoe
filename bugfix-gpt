@@ -1,0 +1,16 @@
+print("100 Days of Code QUIZ")
+print()
+print("How many can you answer correctly?")  # Fixed the missing quotation mark
+ans1 = input("What language are we writing in?")  # Added 'input' to take user input
+if ans1.lower() == "python":  # Added 'lower()' to handle different letter cases
+  print("Correct")
+else:
+  print("Nope🙈")  # Fixed the missing quotation mark
+
+ans2 = int(input("Which lesson number is this?"))  # Converted input to integer
+if ans2 > 12:
+  print("We're not quite that far yet")
+elif ans2 == 12:  # Moved the condition to check for equality before the 'else' block
+  print("That's right!")
+else:
+  print("We've gone well past that!")
