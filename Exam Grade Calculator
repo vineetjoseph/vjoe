@@ -1,0 +1,19 @@
+print("Exam grade calculator")
+print()
+exam = input("name of exam: ")
+max = float(input("Max Score:"))
+yourScore = float(input("Your score:"))
+percent = (yourScore / max)*100
+rounded = round(percent, 2)
+if (percent >89):
+  print("you got" , rounded, "which is an A+ ")
+elif (percent >79) and (percent <90):
+  print("you got" , rounded, "which is an A")
+elif (percent >69) and (percent <80):
+  print("you got" , rounded, "which is an B")
+elif (percent >59) and (percent <70):
+  print("you got" , rounded, "which is an C")
+elif (percent >49) and (percent <60):
+  print("you got" , rounded, "which is an D")
+elif (percent <50):
+  print("you got" , rounded, "which is an U")
