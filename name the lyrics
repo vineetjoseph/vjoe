@@ -1,0 +1,12 @@
+print("Game called Fill in the blank Lyrics")
+print ("(Type in the blank lyrics to see if you know my fav song)")
+print ("")
+count = 1
+while True:
+  hallowed = input("HaLlowed be _____ name: ")
+  if hallowed != "thy":
+    print("nope. try again")
+    count += 1
+  else:
+    print("congrats you got it right. it took you", count, "attempts")
+    break
