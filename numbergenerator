@@ -1,0 +1,7 @@
+print ("Number Generator")
+start = int(input("Start at >"))
+end = int(input("End Before >"))
+increment = int(input("Incremental value>"))
+print("")
+for i in range(start, end, increment):
+  print(i)
