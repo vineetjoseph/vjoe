@@ -1,0 +1,26 @@
+10 PRINT "Simple Calculator"
+20 PRINT "1. Addition"
+30 PRINT "2. Subtraction"
+40 PRINT "3. Multiplication"
+50 PRINT "4. Division"
+60 PRINT "5. Quit"
+70 INPUT "Choose an option (1/2/3/4/5): ", choice
+
+80 IF choice = 5 THEN END
+
+90 INPUT "Enter first number: ", num1
+100 INPUT "Enter second number: ", num2
+
+110 IF choice = 1 THEN PRINT "Result: "; num1 + num2
+120 IF choice = 2 THEN PRINT "Result: "; num1 - num2
+130 IF choice = 3 THEN PRINT "Result: "; num1 * num2
+140 IF choice = 4 THEN 
+150     IF num2 = 0 THEN 
+160         PRINT "Cannot divide by zero"
+170     ELSE 
+180         PRINT "Result: "; num1 / num2
+190     END IF
+200 END IF
+
+210 PRINT "-------------------"
+220 GOTO 20
