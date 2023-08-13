@@ -1,0 +1,17 @@
+print("Totally Random One Hundred to one")
+
+import random
+count = 0
+myNumber = random.randint(1, 100)
+for i in range(10):
+  guess = int(input("what is your guess?: "))
+  count += 1
+  if guess == myNumber:
+    print("yout got it")
+    print("took you", count, "guesses")
+    print("")
+    break
+  elif guess < myNumber:
+    print("your number is too low")
+  elif guess > myNumber:
+    print("your number is too high")
