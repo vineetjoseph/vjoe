@@ -1,0 +1,18 @@
+print("Math Game. Lets test your skill")
+print("")
+multiple = int(input("Pick your multiplier > "))
+counter = 0
+for i in range(1, 11):
+  c_answer = i*multiple
+  print (i, "x", multiple)
+  answer = int(input(">"))
+  if answer == c_answer:
+    print("correct")
+    counter += 1
+  else:
+    print("womp womp")
+print("")
+print("---")
+print ("You scored", counter, "out of 10")
+if counter == (10):
+  print("Congrats 🎉  on the perfect score")
