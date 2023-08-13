@@ -1,0 +1,10 @@
+print("Replit Login System")
+print("")
+def username():
+  username = input("what is username >")
+  password = input("what is your password >")
+  if username == ("Vineet") and password == ("joe"):
+    print("Welcome to replit!")
+  else:
+    print("Whoops! I dont recognize that user name or password")
+username()
