@@ -1,0 +1,13 @@
+print("Character Stats Generator")
+print("")
+Warrior1 = input("what is your warrior name:")
+import random
+def rollDice(number):
+  for i in range(number):
+    dice = int(random.randint(1, number))
+    return(dice)
+
+dice1 = rollDice(6)
+dice2 = rollDice(8)
+score1 = dice1 * dice2
+print("Your health is", score1)
