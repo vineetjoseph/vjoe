@@ -1,0 +1,8 @@
+import random
+def myPin(number):
+  Pin = ""
+  for i in range(number):
+    Pin += str(random.randint(0,5))
+  return Pin
+myPin = myPin(4)
+print(myPin)
