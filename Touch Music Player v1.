@@ -1,0 +1,10 @@
+from replit import audio
+
+def play():
+  source = audio.play_file('audio.wav')
+  source.paused == False
+print("🎵 Touch music player")
+userInput = int(input("Press 1 to play > "))
+if userInput == 1:
+  print("Lets play some music")
+  play()
