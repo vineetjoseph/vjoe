@@ -1,0 +1,99 @@
+import random
+import os
+import time
+print("THE BATTLE OF GITHUBIA")
+print("")
+Legend1 = input("Name your Legend > ")
+Character = input("What is your Character type (Human, Elf, Wizard, Orc) > ")
+print("")
+time.sleep(1)
+os.system("clear")
+
+def dice(number):
+  dice = int(random.randint(1, number))
+  return dice
+dice1 = dice(6)
+dice2 = dice(8)
+health1 = (dice1 * dice2)/2 + 10
+strength1 = (dice1 * dice2)/2 + 12
+print(Legend1, "the", Character)
+print("Health: ", health1)
+print("Strength: ", strength1)
+print("")
+
+
+time.sleep(3)
+os.system("clear")
+print("")
+Legend2 = input("Who would you like to fight? > ")
+Character = input("What is your Character type (Human, Elf, Wizard, Orc) > ")
+print("")
+time.sleep(1)
+os.system("clear")
+def dice(number):
+  dice = int(random.randint(1, number))
+  return dice
+dice1 = dice(6)
+dice2 = dice(8)
+health2 = (dice1 * dice2)/2 + 10
+strength2 = (dice1 * dice2)/2 + 12
+print(Legend2)
+print("Health: ", health2)
+print("Strength: ", strength2)
+print("")
+
+time.sleep(1)
+os.system("clear")
+
+print("⚔️ BATTLE TIME ⚔️")
+
+dice3 = dice(6)
+dice4 = dice(6)
+if dice3 > dice4:
+  print(Legend1, "wins")
+  damage = (strength1 - strength2) + 1
+  print("Damage:", damage)
+  newHealth1 = health1 - damage
+  print(Legend1, health1)
+  print(Legend2, newHealth1)
+  while newHealth1 > 0:
+    dice3 = dice(6)
+    dice4 = dice(6)
+    if dice3 > dice4:
+      print(Legend1, "wins")
+      damage = (strength2 - strength2) + 1
+      print("Damage:", damage)
+      newHealth2 = health2 - damage
+      print(Legend1, health1)
+      print(Legend2, newHealth2)
+    else:
+      print(Legend2, "wins")
+      damage = (strength1 - strength2) + 1
+      print("Damage:", damage)
+      newHealth1 = health1 - damage
+      print(Legend2, health2)
+      print(Legend1, newHealth1ealth)
+else:
+  print(Legend2, "wins")
+  damage = (strength1 - strength2) + 1
+  print("Damage:", damage)
+  newHealth2 = health2 - damage
+  print(Legend2, newHealth2)
+  print(Legend1, health1)
+  while newHealth2 > 0:
+    dice3 = dice(6)
+    dice4 = dice(6)
+    if dice3 > dice4:
+      print(Legend1, "wins")
+      damage = (strength1 - strength2) + 1
+      print("Damage:", damage)
+      newHealth2 = health2 - damage
+      print(Legend1, health1)
+      print(Legend2, health2)
+    else:
+      print(Legend2, "wins")
+      damage = (strength1 - strength2) + 1
+      print("Damage:", damage)
+      newHealth1 = health1 - damage
+      print(Legend2, health2)
+      print(Legend1, newHealth1)
