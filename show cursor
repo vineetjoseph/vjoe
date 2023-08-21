@@ -1,0 +1,6 @@
+import os, time
+print('\033[?25h', end="")
+for i in range(1, 101):
+  print(i)
+  time.sleep(0.2)
+  os.system("clear")
