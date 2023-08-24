@@ -1,0 +1,29 @@
+def colorChange(color):
+  if color == "red":
+    return("\033[31m")
+  elif color == "white":
+    return("\033[0m")
+  elif color == "blue":
+    return("\033[34m")
+  elif color == "green":
+    return("\033[32m")
+  elif color == "yellow":
+    return("\033[33m")
+  elif color == "purple":
+    return("\033[35m")
+title = ("Welcome To")
+subtitle = f"{colorChange('red')}= {colorChange('white')}= {colorChange('blue')}= {colorChange('yellow')}Reachout {colorChange('green')}= {colorChange('yellow')}= {colorChange('purple')}="
+body = "Definitley not a rip off of a certain sales automation platform"
+print(f"{title: ^50}")
+print(f"{subtitle:^85}")
+print("")
+print(f"{colorChange('yellow')}{body:>80}")
+print("")
+exclaim = "Honest."
+user = "Username:"
+password = "Password:"
+pause = "pause"
+print(f"{colorChange('red')}{exclaim:^50}")
+print("")
+print(f"{colorChange('white')}{user:^50}")
+print(f"{colorChange('white')}{password:^50}")
