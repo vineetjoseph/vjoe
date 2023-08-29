@@ -1,0 +1,20 @@
+import time
+import os
+myAgenda =[]
+def printList():
+  print()
+  for item in myAgenda:
+    print(item)
+    print()
+while True:
+  menu = input("add or remove? ")
+  if menu == "add":
+    item = input("What is next on your agenda for the day? ")
+    myAgenda.append(item)
+    printList()
+    time.sleep(2)
+    os.system("clear")
+  elif menu =="remove":
+    item = input("Which item would you like to remove?")
+    myAgenda.remove(item)
+    printList()
