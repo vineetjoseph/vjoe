@@ -1,0 +1,23 @@
+print ("\033[32m", "To Do list Manager")
+print("\033[0m","")
+myPartyList = []
+
+def printList():
+  print() 
+  for item in myPartyList:
+    print(item)
+  print() 
+
+while True:
+  menu = input("Would you like to view, add or remove from your todo list?: ")
+  if menu == "add":
+    item = input("What would you like to add?: ")
+    myPartyList.append(item)
+  elif menu == "remove":
+    item = input("What would you like to remove?: ")
+    if item in myPartyList:
+      myPartyList.remove(item)
+    else:
+      print(f"{item} was not in the list")
+  elif menu == "view":
+    printList()
