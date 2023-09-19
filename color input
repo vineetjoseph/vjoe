@@ -1,0 +1,13 @@
+color = ["r", "g", "b"]
+
+def newPrint(letter):
+  if letter=="r":
+    print("\033[31m", end="")
+  elif letter=="g":
+    print("\033[32m", end="")
+  elif letter=="b":
+    print("\033[34m", end="")
+story = input("Would you share your story? >")
+for letter in story:
+  newPrint(letter.lower())
+  print(letter, end="")
