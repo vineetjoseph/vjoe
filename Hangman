@@ -1,0 +1,24 @@
+import random
+wordset = ["touch"]
+
+word = random.choice(wordset)
+
+letterPicked = []
+
+while True:
+  letter = input("Type your first letter to guess this word? >").lower()
+  letterPicked.append(letter)
+  
+  if letter in word:
+    print("you found a letter")
+  else:
+    print("Thats not it.")
+
+
+  for letter in word:
+    if letter in letterPicked:
+      print(letter, end="")
+    else:
+      print('_', end ="")
+      allLetters = False
+  print()
