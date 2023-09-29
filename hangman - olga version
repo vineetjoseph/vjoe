@@ -1,0 +1,56 @@
+import random, os, time
+wordset = ["baloo", "booba"]
+
+word = random.choice(wordset)
+
+letterPicked = []
+
+lives = 8
+
+title = ("⭐️ Hangman ⭐️")
+print(f"{title: ^50}")
+print()
+print("Hi", "\033[35m", "Olga My Lovely GF", "\033[0m")
+print()
+while True:
+  letter = input("Type a letter to guess this five letter word? > ").lower()
+  letterPicked.append(letter)
+  
+  
+  if letter in word:
+    print()
+    print("\033[34m", "Olga", "\033[0m", "you found a letter")
+    print()
+  else:
+    lives -=1
+    print()
+    print("Thats not it at all", "\033[34m", "Olga", "\033[0m")
+    print()
+
+  if lives == 0:
+    print("GAME OVER")
+    print()
+    print("\033[35m", "Olga", "\033[0m", "lost 😞 ")
+    break
+  print("You have", "\033[35m", f"{lives}", "\033[0m", "lives left")
+  time.sleep(4)
+  os.system("clear")
+  print()
+
+  allLetters = True
+  for letter in word:
+    if letter in letterPicked:
+      print(letter, end="")
+    else:
+      print('_', end ="")
+      allLetters = False
+  print()
+
+  if allLetters:
+    print()
+    print("You guessed it right 🎉 🎊 in", f"{lives}", "tries")
+    print()
+    print("\033[35m", "Olga", "\033[0m", "you can clearly hang with the Hangman cuz you're so smart")
+    break  
+  print()
+  
