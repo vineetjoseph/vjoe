@@ -1,0 +1,9 @@
+print("🌟 Touch Card ⭐️ ")
+print()
+contactCard = {"name" : "vineet", "age" : 35, "email" : "v"}
+contactCard["name"] = input("What is your name? ").strip().capitalize()
+contactCard["age"] = input("what is your age? ")
+contactCard["email"] = input("what is your email? ")
+contactCard.update({"address" : "Jersey City"})
+
+print("Hi", contactCard['name'], "our dictionary tells us that you are", contactCard['age'], "and we can email you on", contactCard['email'], ". Also you live in", contactCard['address'])
