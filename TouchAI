@@ -1,0 +1,16 @@
+import os
+from pathlib import Path
+import sys
+from langchain.text_splitter import CharacterTextSplitter
+
+trainingData = list(Path("training/)").glob("**/*.*"))
+
+if len(trainingData) <1:
+  print("no files in the training folder", file=sys.stderr)
+  exit()
+
+data = []
+for training in trainingData:
+  with open(training) as f:
+    print(f"Add{f.name} to dataset")
+    data.append(f.read())
