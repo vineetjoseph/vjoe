@@ -1,0 +1,90 @@
+import os
+import sys
+from pathlib import Path
+from langchain.text_splitter import CharacterTextSplitter
+import faiss
+from langchain.vectorstores import FAISS
+from langchain.embeddings import OpenAIEmbeddings
+import pickle
+import openai
+import tiktoken
+from langchain.llms import OpenAI
+from langchain.chains import LLMChain
+from langchain.prompts import PromptTemplate
+from langchain.memory import ConversationBufferWindowMemory
+
+print("Sales Email generator")
+def train():
+  trainingData = list(Path("training/").glob("**/*.*"))
+  
+  if len(trainingData) <1:
+    print("no files in the training folder", file=sys.stderr)
+    exit()
+  
+  data = []
+  for training in trainingData:
+    with open(training) as f:
+      print(f"Add{f.name} to dataset")
+      data.append(f.read())
+  
+  textSplitter = CharacterTextSplitter(chunk_size=2000, separator="\n")
+  
+  docs = []
+  for sets in data:
+    docs.extend(textSplitter.split_text(sets))
+  
+  store = FAISS.from_texts(docs, OpenAIEmbeddings())
+  faiss.write_index(store.index, "training.index")
+  store.index = None
+  
+  with open("faiss.pkl", "wb") as f:
+    store = pickle.dump(store, f)
+
+index = faiss.read_index("training.index")
+
+with open("faiss.pkl", "rb") as f:
+  store = pickle.load(f)
+  store.index = index
+
+masterPrompt = """
+You are a chatbot that creates email copy. You are a professional email copier.
+You will use the embeddings data provided and always answer honsestly. Use format:
+Email Subject
+
+Email Body:
+Company and personal Intro
+Company value proposition
+Call to action
+
+Use the following pieces of MemoryContext to answer the questions at the end. 
+Also remember ConversationHistory is a list of conversation objects.
+___
+ConversationHistory: {history}
+____
+MemoryContext: {context}
+_____
+human: {question}
+bot:
+"""
+prompt = PromptTemplate(template=masterPrompt, input_variables=["history", "context", "question"])
+
+llmChain = LLMChain(prompt=prompt, llm=OpenAI(temperature=0.7))
+
+def onMessage(question, history):
+  docs = store.similarity_search(question)
+  contexts =[]
+  for i, doc in enumerate(docs):
+    contexts.append(f"Context[i]:\n{doc.page_content}")
+  answer = llmChain.predict(question=question, context="\n\n".join(contexts), history=history)
+  return answer
+
+history = []
+context = []
+while True:
+  question = input("Hi Olga, I'm a sales email generator.How can I help? ")
+  if question == "exit":
+    break
+  answer = onMessage(question, history)
+  print(f"Bot: {answer}")
+  history.append(answer)
+  context.append(question)
