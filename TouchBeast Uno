@@ -1,0 +1,20 @@
+print("\033[36m TouchBeast \033[0m")
+print()
+
+beast = {"Beast Name": None, "Beast Type": None, "Special Move": None, "Starting Health": None, "Starting Attack": None}
+
+for name in beast.keys():
+  beast[name] = input(f"{name}: ")
+
+print()
+for name, value in beast.items():
+  if beast['Beast Type'] == "Earth":
+    print(f"\033[36m {name}: {value} \033[0m")
+  elif beast['Beast Type'] == "Fire":
+    print(f"\033[31m {name}: {value} \033[0m")
+  elif beast['Beast Type'] == "Water":
+    print(f"\033[34m {name}: {value} \033[0m")
+  elif beast['Beast Type'] == "Air":
+    print(f"\033[33m {name}: {value} \033[0m")
+  elif beast['Beast Type'] == "Lightning":
+    print(f"\033[35m {name}: {value} \033[0m")
