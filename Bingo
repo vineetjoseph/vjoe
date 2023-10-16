@@ -1,0 +1,32 @@
+import random
+
+def generate_bingo_card():
+    # Generate a list of random unique numbers between 0 and 90
+    numbers = random.sample(range(91), 25)
+
+    # Sort the numbers
+    numbers.sort()
+
+    # Create a 2D list (5x5) for the bingo card
+    bingo_card = [numbers[i:i+3] for i in range(0, 3)]
+
+    # Replace the center square with 'BINGO!'
+    bingo_card[1][1] = 'BINGO!'
+
+    return bingo_card
+
+def display_bingo_card(bingo_card):
+    print("\nBingo Card:\n")
+    for row in bingo_card:
+        print("|", end="")
+        for item in row:
+            if isinstance(item, int) and item < 10:
+                # Add a space for single-digit numbers for alignment
+                print(f" {item} |", end="")
+            else:
+                print(f"{item} |", end="")
+        print("\n" + "-" * 15)
+
+if __name__ == "__main__":
+    bingo_card = generate_bingo_card()
+    display_bingo_card(bingo_card)
