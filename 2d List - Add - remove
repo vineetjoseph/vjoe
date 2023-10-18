@@ -1,0 +1,25 @@
+def prettyprint():
+  print()
+  for row in listofshame:
+    for item in row:
+      print(f"{item:^10}", end=" | ")
+    print()
+
+listofshame = []
+
+while True:
+  menu = input("add or remove?")
+  if menu == "add":
+    name = input("name: ")
+    age = input("age: ")
+    height = input("height: ")
+    listofshame.append([name, age, height])
+    prettyprint()
+  elif menu == "remove":
+    name = input("name: ")
+    for row in listofshame:
+      if row[0] == name:
+        listofshame.remove(row)
+        prettyprint()
+  else:
+    print("invalid input")
