@@ -1,0 +1,26 @@
+
+listoffriends = []
+def prettyprint():
+  print()
+  for row in listoffriends:
+    for item in row:
+      print(f"{item:^10}", end=" | ")
+    print()
+while True:
+  menu = input("Add or Remove")
+  if menu == "add":
+    name = input("what is your name?")
+    age = input("what is your age?")
+    favcolor = input("what is your favorite color?")
+    row = [name, age, favcolor]
+    listoffriends.append(row)
+    prettyprint()
+    exit = input("do you want to exit?")
+    if exit == "y":
+      break
+  else:
+    name = input("what is the name of the record to delete?")
+    for row in listoffriends:
+      if name in row:
+        listoffriends.remove(row)
+        prettyprint()
