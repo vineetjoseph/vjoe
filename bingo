@@ -1,0 +1,46 @@
+import random
+
+def print_bingo_card(card):
+    for row in card:
+        print("| " + " | ".join(f"{item:2}" for item in row) + " |")
+
+def mark_bingo_card(card, number):
+    for row in range(len(card)):
+        for col in range(len(card[row])):
+            if card[row][col] == number:
+                card[row][col] = 'X'
+    return card
+
+def check_win(card):
+    for row in card:
+        if any(item != 'X' for item in row):
+            return False
+    return True
+
+# Generate a 3x3 bingo card with random numbers
+numbers = random.sample(range(1, 31), 9)
+bingo_card = [numbers[i:i+3] for i in range(0, 9, 3)]
+
+# Print initial bingo card
+print("Initial Bingo Card:")
+print_bingo_card(bingo_card)
+
+# Main loop to mark numbers and check for win
+while True:
+    try:
+        number_to_mark = int(input("Enter a number to mark (1-30): "))
+    except ValueError:
+        print("Invalid input. Please enter a number.")
+        continue
+
+    # Mark the number on the bingo card
+    bingo_card = mark_bingo_card(bingo_card, number_to_mark)
+
+    # Print the updated bingo card
+    print("\nUpdated Bingo Card:")
+    print_bingo_card(bingo_card)
+
+    # Check if the user has won
+    if check_win(bingo_card):
+        print("You have won!")
+        break
