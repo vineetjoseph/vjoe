@@ -1,0 +1,124 @@
+import pygame
+import random
+
+# Initialize Pygame
+pygame.init()
+
+# Constants
+WIDTH, HEIGHT = 800, 600
+BALL_RADIUS = 15
+PAD_WIDTH, PAD_HEIGHT = 10, 100
+HALF_PAD_WIDTH = PAD_WIDTH // 2
+HALF_PAD_HEIGHT = PAD_HEIGHT // 2
+BALL_SPEED = 7
+PADDLE_SPEED = 10
+
+# Colors
+WHITE = (255, 255, 255)
+BLACK = (0, 0, 0)
+
+# Screen setup
+screen = pygame.display.set_mode((WIDTH, HEIGHT))
+pygame.display.set_caption("Pong")
+
+# Game clock
+clock = pygame.time.Clock()
+
+# Ball and paddles
+ball_pos = [WIDTH // 2, HEIGHT // 2]
+ball_vel = [random.choice([-BALL_SPEED, BALL_SPEED]), random.choice([-BALL_SPEED, BALL_SPEED])]
+paddle1_pos = HEIGHT // 2 - HALF_PAD_HEIGHT
+paddle2_pos = HEIGHT // 2 - HALF_PAD_HEIGHT
+paddle1_vel = 0
+paddle2_vel = 0
+
+# Draw everything
+def draw():
+    screen.fill(BLACK)
+    pygame.draw.rect(screen, WHITE, (HALF_PAD_WIDTH, paddle1_pos, PAD_WIDTH, PAD_HEIGHT))
+    pygame.draw.rect(screen, WHITE, (WIDTH - PAD_WIDTH - HALF_PAD_WIDTH, paddle2_pos, PAD_WIDTH, PAD_HEIGHT))
+    pygame.draw.circle(screen, WHITE, ball_pos, BALL_RADIUS)
+    pygame.display.flip()
+
+# Update ball position
+def update_ball():
+    global ball_pos, ball_vel, paddle1_pos, paddle2_pos
+
+    # Move the ball
+    ball_pos[0] += ball_vel[0]
+    ball_pos[1] += ball_vel[1]
+
+    # Ball collision with top and bottom
+    if ball_pos[1] <= BALL_RADIUS or ball_pos[1] >= HEIGHT - BALL_RADIUS:
+        ball_vel[1] = -ball_vel[1]
+
+    # Ball collision with paddles
+    if (ball_pos[0] <= PAD_WIDTH + BALL_RADIUS and paddle1_pos < ball_pos[1] < paddle1_pos + PAD_HEIGHT) or \
+       (ball_pos[0] >= WIDTH - PAD_WIDTH - BALL_RADIUS and paddle2_pos < ball_pos[1] < paddle2_pos + PAD_HEIGHT):
+        ball_vel[0] = -ball_vel[0]
+
+    # Check for scoring
+    if ball_pos[0] < BALL_RADIUS:  # Player 2 scores
+        reset_ball()
+    elif ball_pos[0] > WIDTH - BALL_RADIUS:  # Player 1 scores
+        reset_ball()
+
+# Reset the ball after a point is scored
+def reset_ball():
+    global ball_pos, ball_vel
+    ball_pos = [WIDTH // 2, HEIGHT // 2]
+    ball_vel = [random.choice([-BALL_SPEED, BALL_SPEED]), random.choice([-BALL_SPEED, BALL_SPEED])]
+
+# Update paddle positions
+def update_paddles():
+    global paddle1_pos, paddle2_pos, paddle1_vel, paddle2_vel
+
+    paddle1_pos += paddle1_vel
+    paddle2_pos += paddle2_vel
+
+    # Keep paddles on screen
+    if paddle1_pos < 0:
+        paddle1_pos = 0
+    elif paddle1_pos > HEIGHT - PAD_HEIGHT:
+        paddle1_pos = HEIGHT - PAD_HEIGHT
+
+    if paddle2_pos < 0:
+        paddle2_pos = 0
+    elif paddle2_pos > HEIGHT - PAD_HEIGHT:
+        paddle2_pos = HEIGHT - PAD_HEIGHT
+
+# Main game loop
+running = True
+while running:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+        elif event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_UP:
+                paddle1_vel = -PADDLE_SPEED
+            elif event.key == pygame.K_DOWN:
+                paddle1_vel = PADDLE_SPEED
+        elif event.type == pygame.KEYUP:
+            if event.key == pygame.K_UP or event.key == pygame.K_DOWN:
+                paddle1_vel = 0
+
+    # AI for the computer paddle
+    if paddle2_pos + HALF_PAD_HEIGHT < ball_pos[1]:
+        paddle2_vel = PADDLE_SPEED
+    elif paddle2_pos + HALF_PAD_HEIGHT > ball_pos[1]:
+        paddle2_vel = -PADDLE_SPEED
+    else:
+        paddle2_vel = 0
+
+    # Update game objects
+    update_ball()
+    update_paddles()
+
+    # Draw everything
+    draw()
+
+    # Cap the frame rate
+    clock.tick(60)
+
+# Quit Pygame
+pygame.quit()
